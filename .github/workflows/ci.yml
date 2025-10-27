@@ -22,8 +22,12 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      # - name: Run tests
-      #   run: npm test
+      - name: Set up env file
+        run: |
+          echo 'DATABASE_URL="postgresql://postgres:postgres@localhost:5432/realworld?schema=public"' > .env
+          
+      - name: Run tests
+        run: npm test
 
       - name: Build image
         run: docker build -t localhost:5000/realworld-node:latest .
