@@ -13,7 +13,7 @@ WORKDIR /app
 
 RUN addgroup --system api && \
           adduser --system -G api api
-
+RUN npx prisma generate
 COPY dist/api api
 RUN chown -R api:api .
 
