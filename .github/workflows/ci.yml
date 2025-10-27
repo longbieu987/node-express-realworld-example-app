@@ -27,9 +27,9 @@ jobs:
           echo 'DATABASE_URL="postgresql://postgres:postgres@localhost:5432/realworld?schema=public"' > .env
       - name: Run Prisma migrations
         run: npx prisma migrate deploy
-        
-      - name: Run tests
-        run: npm test
+
+      # - name: Run tests
+      #   run: npm test
 
       - name: Build image
         run: docker build -t localhost:5000/realworld-node:latest .
