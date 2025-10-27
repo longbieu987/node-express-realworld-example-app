@@ -13,12 +13,13 @@ WORKDIR /app
 
 RUN addgroup --system api && \
           adduser --system -G api api
-RUN npx prisma generate
+
 COPY dist/api api
 RUN chown -R api:api .
 
 # You can remove this install step if you build with `--bundle` option.
 # The bundled output will include external dependencies.
 RUN npm --prefix api --omit=dev -f install
+RUN npx --prefix api prisma generate
 
 CMD [ "node", "api" ]
