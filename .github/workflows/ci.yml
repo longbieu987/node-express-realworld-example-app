@@ -30,7 +30,8 @@ jobs:
 
       # - name: Run tests
       #   run: npm test
-
+      - name: Run build
+        run: npm run build
       - name: Build image
         run: docker build -t localhost:5000/realworld-node:latest .
 
